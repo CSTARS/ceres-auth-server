@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Email Verification</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		var footer = "<br /><br />-Ceres Dev Team<br /><a href='http://ceres.ca.gov'>ceres.ca.gov</a>"
+		var $_GET = {};
+		document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+		    function decode(s) {
+		        return decodeURIComponent(s.split("+").join(" "));
+		    }
+	
+		    $_GET[decode(arguments[1])] = decode(arguments[2]);
+		});
+		
+		$.ajax({
+			url : "/rest/verifyCeresUser?t="+$_GET.t,
+			success : _success,
+			error   : _failure
+		});
+		
+		function _success(resp) {
+			if( resp.error ) {
+				$("#content").html("Error: "+resp.message+footer);
+				return;
+			}
+			$("#content").html("Thank You. Your email has been verified.  Please wait while an admin"+
+						" approves your account.<br /><br /><a href='"+resp.app.website+"'>Return to "+resp.app.name+"</a>"+
+						footer);
+		 }
+		 function _failure() {
+			 $("#content").html("Unable to verify email.  Server Error :/"+footer);
+			return;
+		 }
+	</script>
+</head>
+<body>
+<div id="content">Verifying Email..</div>
+</body>
+</html>

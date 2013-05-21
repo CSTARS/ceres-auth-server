@@ -1,0 +1,11 @@
+.page {
+	display : none;
+}
+
+input[type=text], input[type=password], input[type=url] {
+	height : 30px;
+}
+
+.form-panel {
+	margin-bottom : 15px;
+}
