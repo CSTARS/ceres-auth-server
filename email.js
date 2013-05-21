@@ -1,5 +1,5 @@
 var nodemailer = require("nodemailer");
-var config = require("/Users/jrmerz/dev/config/emailConfig.js").config;
+var config = require("/etc/node/auth/emailConfig.js").config;
 
 // TODO: replace w/o ceres MX server
 // create reusable transport method (opens pool of SMTP connections)

@@ -6,6 +6,9 @@
   "dependencies" : {
     "express"  : "*",
     "mongodb"  : "*",
+    "MD5"               : "*",
+    "bcrypt"            : "*",
+    "nodemailer"            : "*",
     "passport"          : "*",
     "passport-google"   : "*",
     "passport-facebook" : "*",
