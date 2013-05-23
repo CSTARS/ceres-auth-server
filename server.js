@@ -27,7 +27,8 @@ if( !rootUrl.match(/^http.*/) || !rootUrl.match(/^https.*/) ) {
 
 var port = 80;
 if( rootUrl.indexOf(":") > -1 ) {
-	port = rootUrl.split(":")[1];
+	console.log(rootUrl.split(":"));
+	port = rootUrl.split(":")[2];
 	try {
 		port = parseInt(port);
 	} catch (e) {}
