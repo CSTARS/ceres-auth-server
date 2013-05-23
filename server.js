@@ -651,3 +651,4 @@ app.get('/rest/deleteUser', function(req, res){
 
 app.listen(port);
 console.log("Auth server is up and running at "+rootUrl);
+console.log("app.listen("+port+");");
