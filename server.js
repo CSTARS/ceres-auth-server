@@ -13,8 +13,30 @@
 // how long a password must be
 var PASSWORD_LENGTH = 5;
 
-// current app url
-var rootUrl = "http://localhost:4000"
+//get the config file
+if( process.argv.length < 3 ) {
+	console.log("you must provide a root rule");
+	process.exit();
+}
+
+//current app url
+var rootUrl = process.argv[2];
+if( !rootUrl.match(/^http.*/) || !rootUrl.match(/^https.*/) ) {
+	rootUrl = "http://"+rootUrl;
+}
+
+var port = 80;
+if( rootUrl.indexOf(":") > -1 ) {
+	port = rootUrl.split(":")[1];
+	try {
+		port = parseInt(port);
+	} catch (e) {}
+}	
+	
+// handle the error safely
+process.on('uncaughtException', function(err) {
+    console.log(err);
+});
 
 
 // init stuff
@@ -627,4 +649,5 @@ app.get('/rest/deleteUser', function(req, res){
 });
 
 
-app.listen(4000);
+app.listen(port);
+console.log("Auth server is up and running at "+rootUrl);
