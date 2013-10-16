@@ -15,7 +15,7 @@ var PASSWORD_LENGTH = 5;
 
 //get the config file
 if( process.argv.length < 3 ) {
-	console.log("you must provide a root rule");
+	console.log("you must provide a root url");
 	process.exit();
 }
 
